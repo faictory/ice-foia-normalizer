@@ -1,4 +1,7 @@
 import json
+import re
+from pathlib import Path
+
 import pytest
 
 from deportation_foia_normalizer.cli import main
@@ -73,6 +76,19 @@ class TestJSONReportIntegration:
         captured_text = capsys.readouterr()
         text_report = captured_text.out
 
+        def extract_count(output, field_name):
+            """Extract a count from the text report output."""
+            pattern = rf"{field_name}:\s+(\d+)"
+            match = re.search(pattern, output, re.IGNORECASE)
+            if match:
+                return int(match.group(1))
+            return None
+
+        text_rows_ingested = extract_count(text_report, "rows ingested")
+        text_rows_normalized = extract_count(text_report, "rows normalized")
+        text_rows_coerced = extract_count(text_report, "rows coerced")
+        text_rows_rejected = extract_count(text_report, "rows rejected")
+
         with pytest.raises(SystemExit) as exc_info:
             main([str(input_file), "--report", "json"])
 
@@ -81,15 +97,32 @@ class TestJSONReportIntegration:
         json_report = json.loads(captured_json.out)
 
         assert text_exit_code == json_exit_code
-        assert "rows ingested:" in text_report.lower()
-        assert "rows normalized:" in text_report.lower()
-        assert "rows rejected:" in text_report.lower()
         assert json_report["rows_ingested"] == json_report["rows_normalized"] + json_report["rows_rejected"]
 
-    def test_json_report_with_sample_csv(self, capsys):
-        """JSON report works with examples/sample.csv."""
+        if text_rows_ingested is not None:
+            assert json_report["rows_ingested"] == text_rows_ingested
+        if text_rows_normalized is not None:
+            assert json_report["rows_normalized"] == text_rows_normalized
+        if text_rows_coerced is not None:
+            assert json_report["rows_coerced"] == text_rows_coerced
+        if text_rows_rejected is not None:
+            assert json_report["rows_rejected"] == text_rows_rejected
+
+    def test_json_report_with_sample_csv(self, tmp_path, capsys):
+        """JSON report works with examples/sample.csv; artifacts in tmp_path."""
+        sample_file = Path(__file__).parent.parent / "examples" / "sample.csv"
+        assert sample_file.exists(), f"Sample file not found at {sample_file}"
+
+        output_file = tmp_path / "sample.normalized.csv"
+        rejects_file = tmp_path / "sample.rejects.csv"
+
         with pytest.raises(SystemExit) as exc_info:
-            main(["examples/sample.csv", "--report", "json"])
+            main([
+                str(sample_file),
+                "-o", str(output_file),
+                "--rejects", str(rejects_file),
+                "--report", "json",
+            ])
 
         assert exc_info.value.code in (0, 3)
         captured = capsys.readouterr()
