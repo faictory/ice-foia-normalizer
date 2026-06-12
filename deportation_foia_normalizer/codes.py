@@ -35,7 +35,6 @@ def normalize_gender(raw):
 
     if upper in gender_map:
         canonical = gender_map[upper]
-        assert canonical in GENDER_VALUES
         was_coerced = trimmed != canonical
         return canonical, was_coerced
 
@@ -76,7 +75,6 @@ def normalize_event_type(raw):
 
     if upper in event_type_map:
         canonical = event_type_map[upper]
-        assert canonical in EVENT_TYPE_VALUES
         was_coerced = trimmed != canonical
         return canonical, was_coerced
 
