@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deportation-foia-normalizer"
+version = "1.0.0"
+description = "Normalize deportation FOIA records"
+requires-python = ">=3.11"
+dependencies = [
+    "openpyxl",
+    "PyYAML",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "ruff",
+]
+
+[project.scripts]
+deportation-foia-normalizer = "deportation_foia_normalizer.cli:main"
