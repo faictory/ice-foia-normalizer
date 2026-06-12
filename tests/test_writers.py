@@ -3,8 +3,6 @@ import sqlite3
 import tempfile
 from pathlib import Path
 
-import pytest
-
 from deportation_foia_normalizer.writers import (
     write_canonical_csv,
     write_rejects_csv,
@@ -102,7 +100,7 @@ def test_write_sqlite_creates_database():
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='records'")
         assert cursor.fetchone() is not None
 
-        cursor.execute(f"SELECT * FROM records")
+        cursor.execute("SELECT * FROM records")
         rows = cursor.fetchall()
         assert len(rows) == 2
         conn.close()
