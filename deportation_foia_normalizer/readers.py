@@ -43,8 +43,8 @@ def _read_csv(path):
             headers = list(reader.fieldnames)
             rows = []
             for row in reader:
-                # Normalize None values to empty strings
-                normalized_row = {k: (v if v is not None else "") for k, v in row.items()}
+                # Normalize None values to empty strings, filter out None keys (extra CSV fields)
+                normalized_row = {k: (v if v is not None else "") for k, v in row.items() if k is not None}
                 rows.append(normalized_row)
             return (headers, rows)
     except Exception as e:
@@ -64,9 +64,6 @@ def _read_xlsx(path):
             header_row = next(rows_iter)
         except StopIteration:
             raise ValueError("XLSX file is empty")
-
-        if header_row is None:
-            raise ValueError("XLSX file has no header row")
 
         headers = [str(h) if h is not None else "" for h in header_row]
         rows = []
