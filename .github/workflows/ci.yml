@@ -1,0 +1,28 @@
+name: Tag CI
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Toolchain + dependency install. A bare runner has neither, so this
+      # must run before any 'make' target. Extension point for other
+      # languages: branch here (Go -> actions/setup-go + 'go mod download').
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - run: make check
+
+      - run: make test
