@@ -3,7 +3,6 @@ from collections import Counter
 from deportation_foia_normalizer.record import (
     CANONICAL_COLUMNS,
     EVENT_TYPE_VALUES,
-    GENDER_VALUES,
 )
 from deportation_foia_normalizer.dates import normalize_date
 from deportation_foia_normalizer.codes import normalize_gender, normalize_event_type
@@ -80,7 +79,6 @@ def _normalize_row(row, source_row_index, column_mapping):
     record = {}
     was_coerced = False
 
-    # Reverse column mapping: canonical -> source header
     canonical_to_source = {v: k for k, v in column_mapping.items()}
 
     for canonical_col in CANONICAL_COLUMNS:
@@ -113,8 +111,8 @@ def _normalize_row(row, source_row_index, column_mapping):
                 if coerced:
                     was_coerced = True
             except ValueError:
-                reason = f'gender value not in {GENDER_VALUES}: "{raw_value}"'
-                return None, False, reason, 'gender not in enum'
+                record['gender'] = 'U'
+                was_coerced = True
 
         elif canonical_col == 'field_office':
             trimmed = str(raw_value).strip() if raw_value else ''
