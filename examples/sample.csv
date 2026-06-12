@@ -1,0 +1,13 @@
+Record ID,Event Type,Event Date,Apprehension AOR,Citizenship,Sex,Removal Country
+REC001,ARR,01/15/2025,Houston Field Office,Mexico,1,Mexico
+REC002,removal,2025-03-22,Phoenix AOR,El Salvador,2,El Salvador
+REC003,detainer,5/8/24,Miami Field Office,Guatemala,Male,Guatemala
+REC004,ARR,"Jan 12, 2025",Denver AOR,Honduras,,Honduras
+REC005,removal,02/10/2025,Los Angeles Field Office,Mexico,Female,Mexico
+REC006,detainer,2025-04-05,Chicago AOR,Colombia,1,Colombia
+REC007,removal,6/7/24,Atlanta Field Office,Peru,,Peru
+REC008,ARR,2025-02-20,New York AOR,Dominican Republic,,Dominican Republic
+REC009,ARR,2025-01-30,San Antonio Field Office,Mexico,Male,Mexico
+REC010,detainer,"Feb 28, 2025",Harlingen AOR,Guatemala,Female,Guatemala
+REC011,removal,32/13/2026,Dallas Field Office,Mexico,,Mexico
+REC012,xyz,2025-03-15,Salt Lake City AOR,Canada,,Canada
