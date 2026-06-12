@@ -1,0 +1,22 @@
+columns:
+  event_date:
+    - Event Date
+    - Apprehension Date
+  field_office:
+    - Apprehension AOR
+    - AOR
+  nationality:
+    - Citizenship
+    - Country
+  gender:
+    - Sex
+  event_type:
+    - Event Type
+  record_id:
+    - Record ID
+    - ID
+  removal_country:
+    - Removal Country
+required:
+  - event_type
+  - event_date
