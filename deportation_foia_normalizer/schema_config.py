@@ -3,6 +3,8 @@ from pathlib import Path
 
 import yaml
 
+from deportation_foia_normalizer.record import REQUIRED_COLUMNS
+
 
 class MissingRequiredColumnError(Exception):
     """Raised when required canonical columns cannot be resolved from source headers."""
@@ -47,7 +49,8 @@ def load_schema(path=None):
 
     # Detect format and parse
     try:
-        if path and (path.endswith('.json') or path.endswith('.JSON')):
+        path_str = str(schema_path)
+        if path_str.endswith('.json') or path_str.endswith('.JSON'):
             schema_data = json.loads(content)
         else:
             # Try YAML (default or fallback)
@@ -68,9 +71,14 @@ def load_schema(path=None):
     if not isinstance(columns, dict):
         raise SchemaLoadError("Schema 'columns' section must be a dict")
 
+    # Merge required columns from schema with REQUIRED_COLUMNS from record
+    # REQUIRED_COLUMNS is the authoritative source and cannot be overridden
+    schema_required = set(required_list) if isinstance(required_list, list) else required_list
+    final_required = REQUIRED_COLUMNS | schema_required
+
     return {
         'alias_map': columns,
-        'required': set(required_list) if isinstance(required_list, list) else required_list,
+        'required': final_required,
     }
 
 
