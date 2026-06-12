@@ -20,3 +20,6 @@ dev = [
 
 [project.scripts]
 deportation-foia-normalizer = "deportation_foia_normalizer.cli:main"
+
+[tool.setuptools.package-data]
+deportation_foia_normalizer = ["default_schema.yaml"]
