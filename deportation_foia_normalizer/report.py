@@ -89,17 +89,20 @@ def _generate_text_report(
     lines.append(f"rejects:         {rejects_path}")
 
     lines.append(f"rows ingested:   {rows_ingested}")
-    lines.append(f"rows normalized:  {rows_normalized}")
+    lines.append(f"rows normalized: {rows_normalized}")
     lines.append(f"rows coerced:    {rows_coerced}")
     lines.append(f"rows rejected:   {rows_rejected}")
 
     lines.append("column mappings:")
-    for source in sorted(column_mappings.keys()):
-        canonical = column_mappings[source]
-        lines.append(f"  {source} -> {canonical}")
+    if column_mappings:
+        max_source_len = max(len(s) for s in column_mappings.keys())
+        for source in column_mappings.keys():
+            canonical = column_mappings[source]
+            padded_source = source.ljust(max_source_len + 2)
+            lines.append(f"  {padded_source}-> {canonical}")
 
     lines.append("reject reasons:")
-    for reason in sorted(reject_reasons.keys()):
+    for reason in reject_reasons.keys():
         count = reject_reasons[reason]
         lines.append(f"  {reason}: {count}")
 
