@@ -91,12 +91,10 @@ def main(argv=None):
             headers, rows = read_input(input_path)
         except FileNotFoundError as e:
             print(f"Error: {e}", file=sys.stderr)
-            exit_code = 1
             print_exit_code_report(1, args.report)
             sys.exit(1)
         except ValueError as e:
             print(f"Error: {e}", file=sys.stderr)
-            exit_code = 1
             print_exit_code_report(1, args.report)
             sys.exit(1)
 
@@ -105,7 +103,6 @@ def main(argv=None):
             schema = load_schema(args.schema)
         except SchemaLoadError as e:
             print(f"Error: {e}", file=sys.stderr)
-            exit_code = 1
             print_exit_code_report(1, args.report)
             sys.exit(1)
 
@@ -117,7 +114,6 @@ def main(argv=None):
                 f"Error: Required column '{e.missing_column}' not found. Available headers: {e.source_headers}",
                 file=sys.stderr,
             )
-            exit_code = 2
             print_exit_code_report(2, args.report)
             sys.exit(2)
 
