@@ -1,8 +1,8 @@
-# deportation-foia-normalizer
+# ice-foia-normalizer
 
 ## Charter
 
-`deportation-foia-normalizer` is a command-line tool that lets advocates and journalists turn one
+`ice-foia-normalizer` is a command-line tool that lets advocates and journalists turn one
 raw ICE FOIA dump (a messy CSV or XLSX from the Deportation Data Project) into a clean,
 canonical-schema table — with normalized ISO-8601 dates, stable column names, a per-row rejects
 file, and a coercion/rejection summary — in a single deterministic command.
@@ -10,8 +10,8 @@ file, and a coercion/rejection summary — in a single deterministic command.
 ## Command Surface
 
 The tool exposes **one** command: normalize a single raw FOIA file. Canonical invocation form is
-`python -m deportation_foia_normalizer <INPUT> [flags]` (the installed console script
-`deportation-foia-normalizer` is an exact alias). There are no subcommands.
+`python -m ice_foia_normalizer <INPUT> [flags]` (the installed console script
+`ice-foia-normalizer` is an exact alias). There are no subcommands.
 
 | Element | Kind | Takes | What it does |
 | --- | --- | --- | --- |
@@ -59,7 +59,7 @@ A row appears in exactly one of the clean table or the rejects file — never si
 `text` (default) — literal shape:
 
 ```
-deportation-foia-normalizer 1.0.0
+ice-foia-normalizer 1.0.0
 input:           examples/sample.csv
 output:          examples/sample.normalized.csv (csv)
 rejects:         examples/sample.rejects.csv
@@ -101,8 +101,8 @@ fields, validate every row, write the clean canonical CSV and the rejects CSV be
 print the text summary to stdout. Worked example:
 
 ```
-$ python -m deportation_foia_normalizer examples/sample.csv
-deportation-foia-normalizer 1.0.0
+$ python -m ice_foia_normalizer examples/sample.csv
+ice-foia-normalizer 1.0.0
 input:           examples/sample.csv
 output:          examples/sample.normalized.csv (csv)
 rejects:         examples/sample.rejects.csv
@@ -128,13 +128,13 @@ This writes `examples/sample.normalized.csv` (canonical schema, ISO dates, stabl
 
 1. **Headline / default** — normalize one dump to CSV beside it:
    ```
-   $ python -m deportation_foia_normalizer examples/sample.csv
+   $ python -m ice_foia_normalizer examples/sample.csv
    ... text summary (see above) ... exit: 0
    ```
 
 2. **SQLite output to a chosen path** — `--format` + `--output`:
    ```
-   $ python -m deportation_foia_normalizer examples/sample.csv --format sqlite -o out/records.sqlite
+   $ python -m ice_foia_normalizer examples/sample.csv --format sqlite -o out/records.sqlite
    ...
    output:          out/records.sqlite (sqlite)
    exit: 0
@@ -143,7 +143,7 @@ This writes `examples/sample.normalized.csv` (canonical schema, ISO dates, stabl
 
 3. **Machine-readable run with explicit rejects path** — `--report json` + `--rejects`:
    ```
-   $ python -m deportation_foia_normalizer examples/sample.csv --report json --rejects out/bad.csv
+   $ python -m ice_foia_normalizer examples/sample.csv --report json --rejects out/bad.csv
    {"version":"1.0.0","input":"examples/sample.csv","output":"examples/sample.normalized.csv",
     "format":"csv","rejects":"out/bad.csv","rows_ingested":12,"rows_normalized":10,
     "rows_coerced":7,"rows_rejected":2,"column_mappings":{"Event Date":"event_date",...},
@@ -152,16 +152,16 @@ This writes `examples/sample.normalized.csv` (canonical schema, ISO dates, stabl
 
 4. **Custom mapping for a renamed dump** — `--schema`:
    ```
-   $ python -m deportation_foia_normalizer 2026q1.csv --schema configs/q1-mapping.yaml
+   $ python -m ice_foia_normalizer 2026q1.csv --schema configs/q1-mapping.yaml
    ... column mappings reflect q1-mapping.yaml ... exit: 0
    ```
 
 5. **Strict gate for CI / fail on missing required column** — `--strict` and the required-mapping guard:
    ```
-   $ python -m deportation_foia_normalizer examples/sample.csv --strict
+   $ python -m ice_foia_normalizer examples/sample.csv --strict
    ... rows coerced: 7 ... exit: 3        # coercion occurred under --strict
 
-   $ python -m deportation_foia_normalizer no_date_column.csv
+   $ python -m ice_foia_normalizer no_date_column.csv
    error: required canonical column 'event_date' could not be mapped from input headers
           [Name, Country, AOR]
    exit: 2
@@ -169,8 +169,8 @@ This writes `examples/sample.normalized.csv` (canonical schema, ISO dates, stabl
 
 6. **Version** — `--version`:
    ```
-   $ python -m deportation_foia_normalizer --version
-   deportation-foia-normalizer 1.0.0
+   $ python -m ice_foia_normalizer --version
+   ice-foia-normalizer 1.0.0
    ```
 
 ## Acceptance criteria
@@ -249,7 +249,7 @@ reads counts which disagree only because the cleanup was done differently.
 - **Makefile contract:** the repo's `Makefile` honors the canonical targets — `make check` (lint +
   test), `make test` (the pytest suite), `make build` (`pip install -e .[dev]`), and `make run`.
 - **`make run`** invokes the real entrypoint on a bundled fixture and produces real output:
-  `python -m deportation_foia_normalizer examples/sample.csv`. The fixture `examples/sample.csv`
+  `python -m ice_foia_normalizer examples/sample.csv`. The fixture `examples/sample.csv`
   ships in the repo — a small raw dump (~12 rows) with drifting headers (e.g. `Event Date`,
   `Apprehension AOR`, `Citizenship`, `Sex`), mixed date formats, coded gender/event values, and a
   couple of malformed rows — so `make run` writes a real normalized table and rejects file and prints

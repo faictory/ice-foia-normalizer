@@ -1,4 +1,4 @@
-from deportation_foia_normalizer.record import EVENT_TYPE_VALUES, GENDER_VALUES
+from ice_foia_normalizer.record import EVENT_TYPE_VALUES, GENDER_VALUES
 
 
 def normalize_gender(raw):

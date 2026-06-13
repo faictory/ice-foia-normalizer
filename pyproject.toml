@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "deportation-foia-normalizer"
+name = "ice-foia-normalizer"
 version = "1.0.0"
 description = "Normalize deportation FOIA records"
 requires-python = ">=3.11"
@@ -19,7 +19,7 @@ dev = [
 ]
 
 [project.scripts]
-deportation-foia-normalizer = "deportation_foia_normalizer.cli:main"
+ice-foia-normalizer = "ice_foia_normalizer.cli:main"
 
 [tool.setuptools.package-data]
-deportation_foia_normalizer = ["default_schema.yaml"]
+ice_foia_normalizer = ["default_schema.yaml"]

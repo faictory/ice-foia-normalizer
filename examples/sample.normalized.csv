@@ -1,0 +1,11 @@
+record_id,event_type,event_date,field_office,nationality,removal_country,gender
+REC001,arrest,2025-01-15,Houston Field Office,MEXICO,Mexico,M
+REC002,removal,2025-03-22,Phoenix AOR,EL SALVADOR,El Salvador,F
+REC003,detainer,2024-05-08,Miami Field Office,GUATEMALA,Guatemala,M
+REC004,arrest,2025-01-12,Denver AOR,HONDURAS,Honduras,U
+REC005,removal,2025-02-10,Los Angeles Field Office,MEXICO,Mexico,F
+REC006,detainer,2025-04-05,Chicago AOR,COLOMBIA,Colombia,M
+REC007,removal,2024-06-07,Atlanta Field Office,PERU,Peru,U
+REC008,arrest,2025-02-20,New York AOR,DOMINICAN REPUBLIC,Dominican Republic,U
+REC009,arrest,2025-01-30,San Antonio Field Office,MEXICO,Mexico,M
+REC010,detainer,2025-02-28,Harlingen AOR,GUATEMALA,Guatemala,F

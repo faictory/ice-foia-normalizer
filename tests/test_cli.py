@@ -3,7 +3,7 @@ import sqlite3
 
 import pytest
 
-from deportation_foia_normalizer.cli import main
+from ice_foia_normalizer.cli import main
 
 
 class TestCLIDefaultInvocation:
@@ -196,7 +196,7 @@ class TestCLIReportFormats:
 
         assert exc_info.value.code == 0
         captured = capsys.readouterr()
-        assert "deportation-foia-normalizer" in captured.out
+        assert "ice-foia-normalizer" in captured.out
         assert "rows ingested:" in captured.out.lower()
 
     def test_json_report_format(self, tmp_path, capsys):

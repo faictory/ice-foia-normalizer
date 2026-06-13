@@ -1,4 +1,4 @@
-from deportation_foia_normalizer.normalize import normalize_rows
+from ice_foia_normalizer.normalize import normalize_rows
 
 
 class TestValidRowsProduceCleanRecords:

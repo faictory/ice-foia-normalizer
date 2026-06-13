@@ -3,7 +3,7 @@ from pathlib import Path
 
 import yaml
 
-from deportation_foia_normalizer.record import REQUIRED_COLUMNS
+from ice_foia_normalizer.record import REQUIRED_COLUMNS
 
 
 class MissingRequiredColumnError(Exception):

@@ -1,7 +1,7 @@
 import json
 from collections import OrderedDict
 
-from deportation_foia_normalizer.report import generate_report
+from ice_foia_normalizer.report import generate_report
 
 
 def test_text_report_exact_shape():
@@ -30,7 +30,7 @@ def test_text_report_exact_shape():
     )
 
     expected_lines = [
-        "deportation-foia-normalizer 1.0.0",
+        "ice-foia-normalizer 1.0.0",
         "input:           examples/sample.csv",
         "output:          examples/sample.normalized.csv (csv)",
         "rejects:         examples/sample.rejects.csv",

@@ -1,5 +1,5 @@
 import json
-from deportation_foia_normalizer import __version__
+from ice_foia_normalizer import __version__
 
 
 def generate_report(
@@ -82,7 +82,7 @@ def _generate_text_report(
     """Generate text format report."""
     lines = []
 
-    lines.append(f"deportation-foia-normalizer {__version__}")
+    lines.append(f"ice-foia-normalizer {__version__}")
 
     lines.append(f"input:           {input_path}")
     lines.append(f"output:          {output_path} ({output_format})")

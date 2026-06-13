@@ -1,13 +1,13 @@
-# deportation-foia-normalizer
+# ice-foia-normalizer
 
 A command-line tool to normalize raw ICE FOIA dumps (CSV/XLSX files) into a clean, canonical-schema table with standardized column names, normalized dates, and per-row validation reports.
 
 ## Quick Start
 
 ```bash
-python -m deportation_foia_normalizer <INPUT> [flags]
+python -m ice_foia_normalizer <INPUT> [flags]
 # or
-deportation-foia-normalizer <INPUT> [flags]
+ice-foia-normalizer <INPUT> [flags]
 ```
 
 ## Command Surface
@@ -93,7 +93,7 @@ Printed to stdout; format controlled by `--report` flag.
 
 **`text` format (default):**
 ```
-deportation-foia-normalizer 1.0.0
+ice-foia-normalizer 1.0.0
 input:           <INPUT>
 output:          <OUTPUT> (csv|sqlite)
 rejects:         <REJECTS>
@@ -130,8 +130,8 @@ A single JSON object with keys: `version`, `input`, `output`, `format`, `rejects
 
 **Basic usage (CSV output beside the input):**
 ```bash
-$ python -m deportation_foia_normalizer examples/sample.csv
-deportation-foia-normalizer 1.0.0
+$ python -m ice_foia_normalizer examples/sample.csv
+ice-foia-normalizer 1.0.0
 input:           examples/sample.csv
 output:          examples/sample.normalized.csv (csv)
 rejects:         examples/sample.rejects.csv
@@ -152,22 +152,22 @@ exit: 0
 
 **SQLite output to a chosen path:**
 ```bash
-python -m deportation_foia_normalizer examples/sample.csv --format sqlite -o out/records.sqlite
+python -m ice_foia_normalizer examples/sample.csv --format sqlite -o out/records.sqlite
 ```
 
 **Machine-readable JSON report:**
 ```bash
-python -m deportation_foia_normalizer examples/sample.csv --report json
+python -m ice_foia_normalizer examples/sample.csv --report json
 ```
 
 **Strict mode (fail if any coercion occurs):**
 ```bash
-python -m deportation_foia_normalizer examples/sample.csv --strict
+python -m ice_foia_normalizer examples/sample.csv --strict
 ```
 
 **Custom alias map:**
 ```bash
-python -m deportation_foia_normalizer 2026q1.csv --schema configs/q1-mapping.yaml
+python -m ice_foia_normalizer 2026q1.csv --schema configs/q1-mapping.yaml
 ```
 
 ## Make Targets
@@ -183,3 +183,7 @@ python -m deportation_foia_normalizer 2026q1.csv --schema configs/q1-mapping.yam
 ## Design and Schema
 
 See [DESIGN.md](DESIGN.md) for the full design document, including problem statement, goals, non-goals, test expectations, and design rationale.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
