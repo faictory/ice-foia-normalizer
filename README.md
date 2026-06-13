@@ -183,3 +183,7 @@ python -m ice_foia_normalizer 2026q1.csv --schema configs/q1-mapping.yaml
 ## Design and Schema
 
 See [DESIGN.md](DESIGN.md) for the full design document, including problem statement, goals, non-goals, test expectations, and design rationale.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
