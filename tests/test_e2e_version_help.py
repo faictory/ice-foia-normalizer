@@ -8,18 +8,18 @@ class TestE2EVersionHelp:
     def test_version_flag_exits_0_and_prints_version(self):
         """--version flag exits 0 and prints the version line."""
         result = subprocess.run(
-            [sys.executable, "-m", "deportation_foia_normalizer", "--version"],
+            [sys.executable, "-m", "ice_foia_normalizer", "--version"],
             capture_output=True,
             text=True,
         )
 
         assert result.returncode == 0
-        assert "deportation-foia-normalizer 1.0.0" in result.stdout
+        assert "ice-foia-normalizer 1.0.0" in result.stdout
 
     def test_help_flag_exits_0_and_prints_usage(self):
         """--help flag exits 0 and prints usage with INPUT arg and flags."""
         result = subprocess.run(
-            [sys.executable, "-m", "deportation_foia_normalizer", "--help"],
+            [sys.executable, "-m", "ice_foia_normalizer", "--help"],
             capture_output=True,
             text=True,
         )

@@ -2,7 +2,7 @@ import csv
 import sqlite3
 from pathlib import Path
 
-from deportation_foia_normalizer.record import CANONICAL_COLUMNS
+from ice_foia_normalizer.record import CANONICAL_COLUMNS
 
 
 def write_canonical_csv(path, clean_records):

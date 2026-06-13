@@ -1,11 +1,11 @@
 from collections import Counter
 
-from deportation_foia_normalizer.record import (
+from ice_foia_normalizer.record import (
     CANONICAL_COLUMNS,
     EVENT_TYPE_VALUES,
 )
-from deportation_foia_normalizer.dates import normalize_date
-from deportation_foia_normalizer.codes import normalize_gender, normalize_event_type
+from ice_foia_normalizer.dates import normalize_date
+from ice_foia_normalizer.codes import normalize_gender, normalize_event_type
 
 
 def normalize_rows(source_headers, rows, column_mapping):

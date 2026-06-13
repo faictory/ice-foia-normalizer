@@ -4,8 +4,8 @@ from pathlib import Path
 
 import pytest
 
-from deportation_foia_normalizer.cli import main
-from deportation_foia_normalizer.record import CANONICAL_COLUMNS
+from ice_foia_normalizer.cli import main
+from ice_foia_normalizer.record import CANONICAL_COLUMNS
 
 
 class TestIntegrationSQLiteOutput:

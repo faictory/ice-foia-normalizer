@@ -11,7 +11,7 @@
 # so `run` MUST exercise the real tool on real input — not just print usage.
 # Wire PACKAGE/SMOKE_ARGS (or replace the run recipe) to the real entrypoint and
 # a fixture shipped under examples/ as the tool takes shape.
-PACKAGE ?= deportation_foia_normalizer
+PACKAGE ?= ice_foia_normalizer
 SMOKE_ARGS ?= examples/sample.csv
 
 .PHONY: lint test check build run

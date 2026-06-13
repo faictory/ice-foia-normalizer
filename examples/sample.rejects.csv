@@ -1,0 +1,3 @@
+Record ID,Event Type,Event Date,Apprehension AOR,Citizenship,Sex,Removal Country,__source_row,__reject_reason
+REC011,removal,32/13/2026,Dallas Field Office,Mexico,,Mexico,11,"unparseable event_date: ""32/13/2026"""
+REC012,xyz,2025-03-15,Salt Lake City AOR,Canada,,Canada,12,"event_type not in {'removal', 'detainer', 'arrest'}: ""xyz"""

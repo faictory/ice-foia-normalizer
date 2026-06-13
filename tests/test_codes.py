@@ -1,7 +1,7 @@
 import pytest
 
-from deportation_foia_normalizer.codes import normalize_gender, normalize_event_type
-from deportation_foia_normalizer.record import GENDER_VALUES, EVENT_TYPE_VALUES
+from ice_foia_normalizer.codes import normalize_gender, normalize_event_type
+from ice_foia_normalizer.record import GENDER_VALUES, EVENT_TYPE_VALUES
 
 
 class TestNormalizeGender:

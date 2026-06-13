@@ -1,4 +1,4 @@
-from deportation_foia_normalizer.dates import normalize_date
+from ice_foia_normalizer.dates import normalize_date
 
 
 class TestFormatParsing:

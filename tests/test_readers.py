@@ -1,7 +1,7 @@
 import pytest
 from openpyxl import Workbook
 
-from deportation_foia_normalizer.readers import read_input
+from ice_foia_normalizer.readers import read_input
 
 
 class TestReadCSV:

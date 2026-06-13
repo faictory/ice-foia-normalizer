@@ -3,12 +3,12 @@ import sqlite3
 import tempfile
 from pathlib import Path
 
-from deportation_foia_normalizer.writers import (
+from ice_foia_normalizer.writers import (
     write_canonical_csv,
     write_rejects_csv,
     write_sqlite,
 )
-from deportation_foia_normalizer.record import CANONICAL_COLUMNS
+from ice_foia_normalizer.record import CANONICAL_COLUMNS
 
 
 def test_write_canonical_csv_creates_file_with_header():

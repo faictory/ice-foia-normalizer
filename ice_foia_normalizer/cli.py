@@ -2,26 +2,26 @@ import argparse
 import sys
 from pathlib import Path
 
-from deportation_foia_normalizer import __version__
-from deportation_foia_normalizer.readers import read_input
-from deportation_foia_normalizer.schema_config import (
+from ice_foia_normalizer import __version__
+from ice_foia_normalizer.readers import read_input
+from ice_foia_normalizer.schema_config import (
     load_schema,
     resolve_columns,
     MissingRequiredColumnError,
     SchemaLoadError,
 )
-from deportation_foia_normalizer.normalize import normalize_rows
-from deportation_foia_normalizer.writers import (
+from ice_foia_normalizer.normalize import normalize_rows
+from ice_foia_normalizer.writers import (
     write_canonical_csv,
     write_sqlite,
     write_rejects_csv,
 )
-from deportation_foia_normalizer.report import generate_report
+from ice_foia_normalizer.report import generate_report
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(
-        prog="deportation-foia-normalizer",
+        prog="ice-foia-normalizer",
         description="Normalize deportation FOIA records",
     )
 
@@ -59,7 +59,7 @@ def main(argv=None):
     parser.add_argument(
         "--version",
         action="version",
-        version=f"deportation-foia-normalizer {__version__}",
+        version=f"ice-foia-normalizer {__version__}",
     )
 
     args = parser.parse_args(argv)

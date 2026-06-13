@@ -14,7 +14,7 @@ class TestE2EStrict:
         shutil.copy(sample_path, input_file)
 
         result = subprocess.run(
-            [sys.executable, "-m", "deportation_foia_normalizer", str(input_file), "--strict"],
+            [sys.executable, "-m", "ice_foia_normalizer", str(input_file), "--strict"],
             cwd=Path(__file__).parent.parent,
         )
 
@@ -27,7 +27,7 @@ class TestE2EStrict:
         shutil.copy(sample_path, input_file)
 
         result = subprocess.run(
-            [sys.executable, "-m", "deportation_foia_normalizer", str(input_file)],
+            [sys.executable, "-m", "ice_foia_normalizer", str(input_file)],
             cwd=Path(__file__).parent.parent,
         )
 

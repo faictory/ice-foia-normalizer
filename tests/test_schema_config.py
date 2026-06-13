@@ -5,7 +5,7 @@ from pathlib import Path
 import pytest
 import yaml
 
-from deportation_foia_normalizer.schema_config import (
+from ice_foia_normalizer.schema_config import (
     MissingRequiredColumnError,
     SchemaLoadError,
     load_schema,

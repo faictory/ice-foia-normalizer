@@ -14,7 +14,7 @@ class TestE2EMissingRequiredColumn:
         )
 
         result = subprocess.run(
-            [sys.executable, "-m", "deportation_foia_normalizer", str(input_file)],
+            [sys.executable, "-m", "ice_foia_normalizer", str(input_file)],
             capture_output=True,
             text=True,
         )
@@ -34,7 +34,7 @@ class TestE2EMissingRequiredColumn:
         )
 
         result = subprocess.run(
-            [sys.executable, "-m", "deportation_foia_normalizer", str(input_file)],
+            [sys.executable, "-m", "ice_foia_normalizer", str(input_file)],
             capture_output=True,
             text=True,
         )
